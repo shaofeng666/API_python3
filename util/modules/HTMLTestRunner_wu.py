@@ -343,21 +343,22 @@ pre{text-align:left;}
 <col align='right' />
 <col align='right' />
 </colgroup>
+<!-- td 宽度 -->
 <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
     <td style="width:150px">用例集/用例</td>
     <td>url</td>
-    <td>请求方式</td>
-    <td>响应</td>
-    <td>预期结果</td>
-    <td>详细</td>
+    <td style="width:80px">请求方式</td>
+    <td style="width:650px">响应</td>
+    <td style="width:240px">预期结果</td>
+    <td style="width:150px">详细</td>
 </tr>
 %(test_list)s
 <tr id='total_row' class="text-center active">
-    <td>总计</td>
-    <td>%(count)s</td>
-    <td>%(Pass)s</td>
-    <td>%(fail)s</td>
-    <td>%(error)s</td>
+    <td></td>
+    <td>总计：%(count)s</td>
+    <td>通过：%(Pass)s</td>
+    <td>失败：%(fail)s</td>
+    <td>错误：%(error)s</td>
     <td>通过率：%(passrate)s</td>
 </tr>
 </table>
@@ -366,10 +367,10 @@ pre{text-align:left;}
     REPORT_CLASS_TMPL = r"""
 <tr class='%(style)s warning'>
     <td>%(desc)s</td>
-    <td class="text-center">%(count)s</td>
-    <td class="text-center">%(Pass)s</td>
-    <td class="text-center">%(fail)s</td>
-    <td class="text-center">%(error)s</td>
+    <td class="text-center">总计：%(count)s</td>
+    <td class="text-center">通过：%(Pass)s</td>
+    <td class="text-center">失败：%(fail)s</td>
+    <td class="text-center">错误：%(error)s</td>
     <td class="text-center"><a href="javascript:showClassDetail('%(cid)s',%(count)s)" class="detail" id='%(cid)s'>详细</a></td>
 </tr>
 """  # variables: (style, desc, count, Pass, fail, error, cid)
@@ -380,7 +381,7 @@ pre{text-align:left;}
     <td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
     <td>%(url)s</td>
     <td>%(method)s</td>
-    <td>%(response)s</td>
+    <td style="height:40px;overflow:auto;">%(response)s</td>
     <td>%(asserts)s</td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou  -->
@@ -416,7 +417,7 @@ pre{text-align:left;}
     <td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
     <td>%(url)s</td>
     <td>%(method)s</td>
-    <td>%(response)s</td>
+    <td><div style="height:100px;overflow:auto;" >%(response)s</div></td>
     <td>%(asserts)s</td>
     <td colspan='5' align='center'>
         <button class="login-button" data-target='#div_%(tid)s'>%(status)s</button>
@@ -537,17 +538,36 @@ class _TestResult(TestResult):
             sys.stderr.write('F')
 
 
+# 增加字段：url=None, method=None,asserts=None, response=None -victor
+URL = 'None'  # url
+METHOD = 'None'  # method
+RESPONSE = 'None'  # response
+ASSERTS = 'None'  # asserts
+
+
+# 初始化：url=None, method=None,asserts=None, response=None -victor
+def set_data( i,url, method, response, asserts):
+    global URL
+    global METHOD
+    global ASSERTS
+    global RESPONSE
+    print("iiiiiiii:%s"%i)
+    URL = url
+    METHOD = method
+    RESPONSE = response
+    ASSERTS = asserts
+
+
 class HTMLTestRunner(Template_mixin):
     """
     """
 
-    # 增加字段：url=None, method=None,asserts=None, response=None -victor
-    def __init__(self, stream=sys.stdout, verbosity=1, title=None, description=None, tester=None, url=None, method=None,
-                 asserts=None, response=None):
-        self.url = url
-        self.method = method
-        self.asserts = asserts
-        self.response = response
+    global URL
+    global METHOD
+    global SASSERT
+    global RESPONSE
+
+    def __init__(self, stream=sys.stdout, verbosity=1, title=None, description=None, tester=None):
         self.stream = stream
         self.verbosity = verbosity
         if title is None:
@@ -564,7 +584,6 @@ class HTMLTestRunner(Template_mixin):
             self.tester = tester
 
         self.startTime = datetime.datetime.now()
-
 
     def run(self, test):
         "Run the given test case or test suite."
@@ -616,11 +635,11 @@ class HTMLTestRunner(Template_mixin):
         ]
 
     def generateReport(self, test, result):
-        report_attrs = self.getReportAttributes(result) # 测试结果概览
+        report_attrs = self.getReportAttributes(result)  # 测试结果概览
         generator = 'HTMLTestRunner %s' % __version__
         stylesheet = self._generate_stylesheet()
         heading = self._generate_heading(report_attrs)
-        report = self._generate_report(result) # 测试结果status为通过率
+        report = self._generate_report(result)  # 测试结果status为通过率
         ending = self._generate_ending()
         output = self.HTML_TMPL % dict(
             title=saxutils.escape(self.title),
@@ -686,7 +705,8 @@ class HTMLTestRunner(Template_mixin):
             )
             rows.append(row)
 
-            for tid, (n, t, o, e) in enumerate(cls_results):
+            for tid, (n, t, o, e) in enumerate(cls_results): # tid
+                print("tid:%s"%tid)
                 self._generate_report_test(rows, cid, tid, n, t, o, e)
 
         report = self.REPORT_TMPL % dict(
@@ -698,7 +718,6 @@ class HTMLTestRunner(Template_mixin):
             passrate=self.passrate,
         )
         return report
-
 
     def _generate_report_test(self, rows, cid, tid, n, t, o, e):
         # e.g. 'pt1.1', 'ft1.1', etc
@@ -736,7 +755,7 @@ class HTMLTestRunner(Template_mixin):
             id=tid,
             output=saxutils.escape(uo + ue),
         )
-
+        # 增加字段：url=None, method=None,asserts=None, response=None -victor
         row = tmpl % dict(
             tid=tid,
             Class=(n == 0 and 'hiddenRow' or 'none'),
@@ -744,12 +763,11 @@ class HTMLTestRunner(Template_mixin):
             desc=desc,
             script=script,
             status=self.STATUS[n],
-            url=self.url,
-            method=self.method,
-            asserts=self.asserts,
-            response=self.response
+            url=URL,
+            method=METHOD,
+            asserts=ASSERTS,
+            response=RESPONSE,
         )
-        print(row)
         rows.append(row)
         if not has_output:
             return

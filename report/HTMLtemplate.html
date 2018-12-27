@@ -118,18 +118,18 @@ function html_escape(s) {
 <div class='heading'>
 <h1 style="font-family: Microsoft YaHei">Python 自动化测试报告</h1>
 <p class='attribute'><strong>测试人员 : </strong> 最棒QA</p>
-<p class='attribute'><strong>开始时间 : </strong> 2018-12-25 22:05:55</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:00:00.360050</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 3，通过 2，失败 1，通过率= 66.67%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2018-12-27 22:18:09</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:00.338096</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 3，通过 3，通过率= 100.00%</p>
 
 <p class='description'>测试结果【截图+样式优化】</p>
 </div>
 
 
 <p id='show_detail_line'>
-<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 66.67% }</a>
-<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 1 }</a>
-<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 2 }</a>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 100.00% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 0 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 3 }</a>
 <a class="btn btn-info" href='javascript:showCase(3)'>所有{ 3 }</a>
 </p>
 <table id='result_table' class="table table-condensed table-bordered table-hover">
@@ -142,21 +142,22 @@ function html_escape(s) {
 <col align='right' />
 <col align='right' />
 </colgroup>
+<!-- td 宽度 -->
 <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
     <td style="width:150px">用例集/用例</td>
     <td>url</td>
-    <td>请求方式</td>
-    <td>响应</td>
-    <td>预期结果</td>
-    <td>详细</td>
+    <td style="width:80px">请求方式</td>
+    <td style="width:650px">响应</td>
+    <td style="width:240px">预期结果</td>
+    <td style="width:150px">详细</td>
 </tr>
 
-<tr class='failClass warning'>
+<tr class='passClass warning'>
     <td>test_login.requsetsTest</td>
-    <td class="text-center">3</td>
-    <td class="text-center">2</td>
-    <td class="text-center">1</td>
-    <td class="text-center">0</td>
+    <td class="text-center">总计：3</td>
+    <td class="text-center">通过：3</td>
+    <td class="text-center">失败：0</td>
+    <td class="text-center">错误：0</td>
     <td class="text-center"><a href="javascript:showClassDetail('c1',3)" class="detail" id='c1'>详细</a></td>
 </tr>
 
@@ -176,11 +177,11 @@ function html_escape(s) {
 	background: #5599FF;
 </style>
 <tr id='pt1_1' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_baidu_1_login__succeed</div></td>
-    <td>baidu.com</td>
-    <td>get</td>
-    <td>{"id":"123123"}</td>
-    <td>a=0</td>
+    <td class='passCase'><div class='testcase'>test_baidu_1_登陆成功1</div></td>
+    <td>https://www.json.cn/</td>
+    <td>POST</td>
+    <td><div style="height:100px;overflow:auto;" >{"time":"2018-12-27 19:00:20","cityInfo":{"city":"天津市","cityId":"101030100","parent":"天津","updateTime":"18:53"},"date":"20181227","message":"Success !","status":200,"data":{"shidu":"12%","pm25":11.0,"pm10":78.0,"quality":"良","wendu":"-8","ganmao":"极少数敏感人群应减少户外活动","yesterday":{"date":"26","sunrise":"07:28","high":"高温 -1.0℃","low":"低温 -7.0℃","sunset":"16:54","aqi":56.0,"ymd":"2018-12-26","week":"星期三","fx":"东北风","fl":"3-4级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},"forecast":[{"date":"27","sunrise":"07:29","high":"高温 -6.0℃","low":"低温 -9.0℃","sunset":"16:55","aqi":60.0,"ymd":"2018-12-27","week":"星期四","fx":"北风","fl":"4-5级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"28","sunrise":"07:29","high":"高温 -5.0℃","low":"低温 -10.0℃","sunset":"16:55","aqi":29.0,"ymd":"2018-12-28","week":"星期五","fx":"西北风","fl":"5-6级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"29","sunrise":"07:30","high":"高温 -3.0℃","low":"低温 -9.0℃","sunset":"16:56","aqi":30.0,"ymd":"2018-12-29","week":"星期六","fx":"西北风","fl":"4-5级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"30","sunrise":"07:30","high":"高温 -2.0℃","low":"低温 -8.0℃","sunset":"16:57","aqi":33.0,"ymd":"2018-12-30","week":"星期日","fx":"西北风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"31","sunrise":"07:30","high":"高温 -1.0℃","low":"低温 -5.0℃","sunset":"16:58","aqi":43.0,"ymd":"2018-12-31","week":"星期一","fx":"东北风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"}]}}</div></td>
+    <td>400</td>
     <td colspan='5' align='center'>
         <button class="login-button" data-target='#div_pt1_1'>通过</button>
     </td>
@@ -202,49 +203,49 @@ function html_escape(s) {
 	background: #5599FF;
 </style>
 <tr id='pt1_2' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_baidu_2_name_err</div></td>
-    <td>baidu.com</td>
-    <td>get</td>
-    <td>{"id":"123123"}</td>
-    <td>a=0</td>
+    <td class='passCase'><div class='testcase'>test_baidu_2_登陆失败2</div></td>
+    <td>https://www.json.cn/</td>
+    <td>POST</td>
+    <td><div style="height:100px;overflow:auto;" >{"time":"2018-12-27 19:00:20","cityInfo":{"city":"天津市","cityId":"101030100","parent":"天津","updateTime":"18:53"},"date":"20181227","message":"Success !","status":200,"data":{"shidu":"12%","pm25":11.0,"pm10":78.0,"quality":"良","wendu":"-8","ganmao":"极少数敏感人群应减少户外活动","yesterday":{"date":"26","sunrise":"07:28","high":"高温 -1.0℃","low":"低温 -7.0℃","sunset":"16:54","aqi":56.0,"ymd":"2018-12-26","week":"星期三","fx":"东北风","fl":"3-4级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},"forecast":[{"date":"27","sunrise":"07:29","high":"高温 -6.0℃","low":"低温 -9.0℃","sunset":"16:55","aqi":60.0,"ymd":"2018-12-27","week":"星期四","fx":"北风","fl":"4-5级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"28","sunrise":"07:29","high":"高温 -5.0℃","low":"低温 -10.0℃","sunset":"16:55","aqi":29.0,"ymd":"2018-12-28","week":"星期五","fx":"西北风","fl":"5-6级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"29","sunrise":"07:30","high":"高温 -3.0℃","low":"低温 -9.0℃","sunset":"16:56","aqi":30.0,"ymd":"2018-12-29","week":"星期六","fx":"西北风","fl":"4-5级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"30","sunrise":"07:30","high":"高温 -2.0℃","low":"低温 -8.0℃","sunset":"16:57","aqi":33.0,"ymd":"2018-12-30","week":"星期日","fx":"西北风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"31","sunrise":"07:30","high":"高温 -1.0℃","low":"低温 -5.0℃","sunset":"16:58","aqi":43.0,"ymd":"2018-12-31","week":"星期一","fx":"东北风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"}]}}</div></td>
+    <td>400</td>
     <td colspan='5' align='center'>
         <button class="login-button" data-target='#div_pt1_2'>通过</button>
     </td>
 </tr>
 
-<tr id='ft1_3' class='none'>
-    <td class='failCase'><div class='testcase'>test_err</div></td>
-    <td>baidu.com</td>
-    <td>get</td>
-    <td>{"id":"123123"}</td>
-    <td>a=0</td>
+<style type="text/css">
+.login-button { /* 按钮美化 */
+    height: 21px;
+    border-width: 0px; /* 边框宽度 */
+    border-radius: 3px; /* 边框半径 */
+    background: #1E90FF; /* 背景颜色 */
+    cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+    outline: none; /* 不显示轮廓线 */
+    font-family: Microsoft YaHei; /* 设置字体 */
+    color: white; /* 字体颜色 */
+    font-size: 12px; /* 字体大小 */
+}
+.login-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: #5599FF;
+</style>
+<tr id='pt1_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_baidu_3_登陆失败3</div></td>
+    <td>https://www.json.cn/</td>
+    <td>POST</td>
+    <td><div style="height:100px;overflow:auto;" >{"time":"2018-12-27 19:00:20","cityInfo":{"city":"天津市","cityId":"101030100","parent":"天津","updateTime":"18:53"},"date":"20181227","message":"Success !","status":200,"data":{"shidu":"12%","pm25":11.0,"pm10":78.0,"quality":"良","wendu":"-8","ganmao":"极少数敏感人群应减少户外活动","yesterday":{"date":"26","sunrise":"07:28","high":"高温 -1.0℃","low":"低温 -7.0℃","sunset":"16:54","aqi":56.0,"ymd":"2018-12-26","week":"星期三","fx":"东北风","fl":"3-4级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},"forecast":[{"date":"27","sunrise":"07:29","high":"高温 -6.0℃","low":"低温 -9.0℃","sunset":"16:55","aqi":60.0,"ymd":"2018-12-27","week":"星期四","fx":"北风","fl":"4-5级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"28","sunrise":"07:29","high":"高温 -5.0℃","low":"低温 -10.0℃","sunset":"16:55","aqi":29.0,"ymd":"2018-12-28","week":"星期五","fx":"西北风","fl":"5-6级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"29","sunrise":"07:30","high":"高温 -3.0℃","low":"低温 -9.0℃","sunset":"16:56","aqi":30.0,"ymd":"2018-12-29","week":"星期六","fx":"西北风","fl":"4-5级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"30","sunrise":"07:30","high":"高温 -2.0℃","low":"低温 -8.0℃","sunset":"16:57","aqi":33.0,"ymd":"2018-12-30","week":"星期日","fx":"西北风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"31","sunrise":"07:30","high":"高温 -1.0℃","low":"低温 -5.0℃","sunset":"16:58","aqi":43.0,"ymd":"2018-12-31","week":"星期一","fx":"东北风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"}]}}</div></td>
+    <td>400</td>
     <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou  -->
-      <!--按钮点击事件 -->
-        <button id='btn_ft1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_3'>失败</button> 
-    <div id='div_ft1_3' class="collapse">
-    <pre>
-    
-ft1_3: 请求开始
-请求结束
-Traceback (most recent call last):
-  File "D:\Documents\API_python3\test_case\test_login.py", line 24, in test_err
-    assert 1 &gt; 2
-AssertionError
-
-
-    </pre>
-    </div>
+        <button class="login-button" data-target='#div_pt1_3'>通过</button>
     </td>
 </tr>
 
 <tr id='total_row' class="text-center active">
-    <td>总计</td>
-    <td>3</td>
-    <td>2</td>
-    <td>1</td>
-    <td>0</td>
-    <td>通过率：66.67%</td>
+    <td></td>
+    <td>总计：3</td>
+    <td>通过：3</td>
+    <td>失败：0</td>
+    <td>错误：0</td>
+    <td>通过率：100.00%</td>
 </tr>
 </table>
 

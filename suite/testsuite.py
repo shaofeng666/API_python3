@@ -28,12 +28,7 @@ def create_report(is_new):
     else:
         raise NameError('输入内容不在范围内;只能选择：n、y')
     re_open = open(report_dir, 'wb')
-    # 测试字段
-    url='baidu.com'
-    method='get'
-    asserts='a=0'
-    response='{"id":"123123"}'
-    runner = HTMLTestRunner(stream=re_open, title=reporttitle, description=description,url=url,method=method,asserts=asserts,response=response)
+    runner = HTMLTestRunner(stream=re_open, title=reporttitle, description=description)
     runner.run(test_suit)
     re_open.close()
 
