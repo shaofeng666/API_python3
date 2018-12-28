@@ -539,23 +539,24 @@ class _TestResult(TestResult):
 
 
 # 增加字段：url=None, method=None,asserts=None, response=None -victor
-URL = 'None'  # url
-METHOD = 'None'  # method
-RESPONSE = 'None'  # response
-ASSERTS = 'None'  # asserts
+URL = []  # url
+METHOD = []  # method
+RESPONSE = [] # response
+ASSERTS = []  # asserts
 
+#  初始化：response输出测试报告 -victor
+def set_response(response):
+    global RESPONSE
+    RESPONSE.append(response)
 
-# 初始化：url=None, method=None,asserts=None, response=None -victor
-def set_data( i,url, method, response, asserts):
+# 初始化：url,method,asserts 输出测试报告 -victor
+def set_data( value):
     global URL
     global METHOD
     global ASSERTS
-    global RESPONSE
-    print("iiiiiiii:%s"%i)
-    URL = url
-    METHOD = method
-    RESPONSE = response
-    ASSERTS = asserts
+    URL.append(value['url'])
+    METHOD.append(value['method'])
+    ASSERTS.append(value['asserts'])
 
 
 class HTMLTestRunner(Template_mixin):
@@ -705,8 +706,7 @@ class HTMLTestRunner(Template_mixin):
             )
             rows.append(row)
 
-            for tid, (n, t, o, e) in enumerate(cls_results): # tid
-                print("tid:%s"%tid)
+            for tid, (n, t, o, e) in enumerate(cls_results):  # tid
                 self._generate_report_test(rows, cid, tid, n, t, o, e)
 
         report = self.REPORT_TMPL % dict(
@@ -756,6 +756,8 @@ class HTMLTestRunner(Template_mixin):
             output=saxutils.escape(uo + ue),
         )
         # 增加字段：url=None, method=None,asserts=None, response=None -victor
+        i = int(tid[-1])-1 # 截取tid最后一个字符，转化为int，-1作为下标
+        # print('出输:%s'%i)
         row = tmpl % dict(
             tid=tid,
             Class=(n == 0 and 'hiddenRow' or 'none'),
@@ -763,10 +765,10 @@ class HTMLTestRunner(Template_mixin):
             desc=desc,
             script=script,
             status=self.STATUS[n],
-            url=URL,
-            method=METHOD,
-            asserts=ASSERTS,
-            response=RESPONSE,
+            url=URL[i],
+            method=METHOD[i],
+            asserts=ASSERTS[i],
+            response=RESPONSE[i],
         )
         rows.append(row)
         if not has_output:

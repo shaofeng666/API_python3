@@ -11,6 +11,7 @@ import os
 import re
 import codecs
 from functools import wraps
+from  util.modules import HTMLTestRunner_wu
 
 try:
     import yaml
@@ -108,7 +109,8 @@ def mk_test_name(name, value, index=0):
     A "trivial" value is a plain scalar, or a tuple or list consisting
     only of trivial values.
     """
-
+    # 调用set_data() 传入测试数据 -victor
+    HTMLTestRunner_wu.set_data(value)
     # Add zeros before index to keep order
     index = "{0:0{1}}".format(index + 1, index_len)
     # 测试用例名称读取 case_name 字段的值 start --Victor
