@@ -4,7 +4,7 @@ import unittest
 from  util.modules import ddt
 from  config import root_path
 from util.gettestdata import get_testcase
-from util.modules.HTMLTestRunner_wu import set_response
+from util.modules.HTMLTestRunner_API import set_response
 
 case_path = root_path + '\\data\\case.xlsx'
 casedata = get_testcase(case_path, 1, '登录')

@@ -1,8 +1,7 @@
 import time
 import unittest
 from config import description, reporttitle
-# from util.modules.HTMLTestRunner_cn import HTMLTestRunner
-from util.modules.HTMLTestRunner_wu import HTMLTestRunner
+from util.modules.HTMLTestRunner_API import HTMLTestRunner
 from config import root_path
 
 

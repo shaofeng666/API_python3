@@ -276,7 +276,6 @@ function html_escape(s) {
 """
     # variables: (title, generator, stylesheet, heading, report, ending)
 
-
     # ------------------------------------------------------------------------
     # Stylesheet
     #
@@ -541,22 +540,26 @@ class _TestResult(TestResult):
 # 增加字段：url=None, method=None,asserts=None, response=None -victor
 URL = []  # url
 METHOD = []  # method
-RESPONSE = [] # response
+RESPONSE = []  # response
 ASSERTS = []  # asserts
+
 
 #  初始化：response输出测试报告 -victor
 def set_response(response):
     global RESPONSE
     RESPONSE.append(response)
 
+
 # 初始化：url,method,asserts 输出测试报告 -victor
-def set_data( value):
+def set_data(value):
     global URL
     global METHOD
     global ASSERTS
+    # 如果出现KeyError: '***' 则需要在测试数据中添加对应字段
     URL.append(value['url'])
     METHOD.append(value['method'])
     ASSERTS.append(value['asserts'])
+
 
 
 class HTMLTestRunner(Template_mixin):
@@ -733,7 +736,7 @@ class HTMLTestRunner(Template_mixin):
         desc = doc and ('%s: %s' % (name, doc)) or name
         # tmpl = has_output and self.REPORT_TEST_WITH_OUTPUT_TMPL or self.REPORT_TEST_NO_OUTPUT_TMPL
         tmpl = has_output and (
-            n == 0 and self.REPORT_TEST_NO_OUTPUT_TMPL or self.REPORT_TEST_WITH_OUTPUT_TMPL) or self.REPORT_TEST_NO_OUTPUT_TMPL
+                n == 0 and self.REPORT_TEST_NO_OUTPUT_TMPL or self.REPORT_TEST_WITH_OUTPUT_TMPL) or self.REPORT_TEST_NO_OUTPUT_TMPL
         # utf-8 支持中文 - Findyou
         # o and e should be byte string because they are collected from stdout and stderr?
         if isinstance(o, str):
@@ -755,9 +758,21 @@ class HTMLTestRunner(Template_mixin):
             id=tid,
             output=saxutils.escape(uo + ue),
         )
-        # 增加字段：url=None, method=None,asserts=None, response=None -victor
-        i = int(tid[-1])-1 # 截取tid最后一个字符，转化为int，-1作为下标
+        # 增加字段：url=None, method=None,asserts=None, response=None 用户HTML报告展示 -victor
+        i = int(tid[-1]) - 1  # 截取tid最后一个字符，转化为int，-1作为下标
         # print('出输:%s'%i)
+        # print("输出RESPONSE:%s"%len(RESPONSE))
+        #
+        if i == len(URL) or i > len(URL):
+            URL.append(
+                '请在ddt.py mk_test_name()方法内调用此模块内的set_data()方法；')
+            METHOD.append('大概113行插入"HTMLTestRunner_API.set_data(value)";')
+            ASSERTS.append('"value"为Excel中的测试数据；具体怎么过来的为ddt源码')
+
+        # 如果循环下标等于RESPONSE的长度，或者下标大于RESPONSE长度，则添加提示；避免下标越界
+        if i == len(RESPONSE) or i > len(RESPONSE):
+            RESPONSE.append('请在case结束后调用本模块内的set_response()方法；传入接口测试的response；')
+
         row = tmpl % dict(
             tid=tid,
             Class=(n == 0 and 'hiddenRow' or 'none'),
