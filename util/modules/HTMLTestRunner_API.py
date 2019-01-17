@@ -50,6 +50,45 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 # URL: http://tungwaiyip.info/software/HTMLTestRunner.html
+PASSRATE_S_TD_TR_TABLE_ = """
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ %(passrate)s }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ %(fail)s }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ %(Pass)s }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ %(count)s }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<!-- td 宽度 -->
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+    <td style="width:150px">用例集/用例</td>
+    <td style="width:125px">url</td>
+    <td style="width:90px">请求方式</td>
+    <td style="width:350px">请求体</td>
+    <td style="width:350px">响应</td>
+    <td style="width:150px">预期结果</td>
+    <td style="width:90px">实际结果</td>
+</tr>
+%(test_list)s
+<tr id='total_row' class="text-center active">
+    <td></td>
+    <td>总计：%(count)s</td>
+    <td>通过：%(Pass)s</td>
+    <td>失败：%(fail)s</td>
+    <td>错误：%(error)s</td>
+    <td>通过率：%(passrate)s</td>
+    <td></td>
+</tr>
+</table>
+"""
 
 __author__ = "Wai Yip Tung,  Findyou"
 __version__ = "0.8.2.2"
@@ -325,43 +364,7 @@ pre{text-align:left;}
     # Report
     #
     # 汉化,加美化效果 --Findyou
-    REPORT_TMPL = """
-<p id='show_detail_line'>
-<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ %(passrate)s }</a>
-<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ %(fail)s }</a>
-<a class="btn btn-success" href='javascript:showCase(2)'>通过{ %(Pass)s }</a>
-<a class="btn btn-info" href='javascript:showCase(3)'>所有{ %(count)s }</a>
-</p>
-<table id='result_table' class="table table-condensed table-bordered table-hover">
-<colgroup>
-<col align='left' />
-<col align='right' />
-<col align='right' />
-<col align='right' />
-<col align='right' />
-<col align='right' />
-<col align='right' />
-</colgroup>
-<!-- td 宽度 -->
-<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
-    <td style="width:150px">用例集/用例</td>
-    <td>url</td>
-    <td style="width:80px">请求方式</td>
-    <td style="width:650px">响应</td>
-    <td style="width:240px">预期结果</td>
-    <td style="width:150px">详细</td>
-</tr>
-%(test_list)s
-<tr id='total_row' class="text-center active">
-    <td></td>
-    <td>总计：%(count)s</td>
-    <td>通过：%(Pass)s</td>
-    <td>失败：%(fail)s</td>
-    <td>错误：%(error)s</td>
-    <td>通过率：%(passrate)s</td>
-</tr>
-</table>
-"""  # variables: (test_list, count, Pass, fail, error ,passrate)
+    REPORT_TMPL = PASSRATE_S_TD_TR_TABLE_  # variables: (test_list, count, Pass, fail, error ,passrate)
 
     REPORT_CLASS_TMPL = r"""
 <tr class='%(style)s warning'>
@@ -371,6 +374,7 @@ pre{text-align:left;}
     <td class="text-center">失败：%(fail)s</td>
     <td class="text-center">错误：%(error)s</td>
     <td class="text-center"><a href="javascript:showClassDetail('%(cid)s',%(count)s)" class="detail" id='%(cid)s'>详细</a></td>
+    <td></td>
 </tr>
 """  # variables: (style, desc, count, Pass, fail, error, cid)
 
@@ -378,9 +382,10 @@ pre{text-align:left;}
     REPORT_TEST_WITH_OUTPUT_TMPL = r"""
 <tr id='%(tid)s' class='%(Class)s'>
     <td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
-    <td>%(url)s</td>
+    <td ><div style="width:125px;height:100px;overflow:auto;" >%(url)s</div></td>
     <td>%(method)s</td>
-    <td style="height:40px;overflow:auto;">%(response)s</td>
+    <td><div style="height:100px;overflow:auto;" >%(body)s</div></td>
+    <td><div style="height:100px;overflow:auto;" >%(response)s</div></td>
     <td>%(asserts)s</td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou  -->
@@ -414,8 +419,9 @@ pre{text-align:left;}
 </style>
 <tr id='%(tid)s' class='%(Class)s'>
     <td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
-    <td>%(url)s</td>
+    <td><div style="width:125px;height:100px;overflow:auto;" >%(url)s</div></td>
     <td>%(method)s</td>
+    <td><div style="height:100px;overflow:auto;" >%(body)s</div></td>
     <td><div style="height:100px;overflow:auto;" >%(response)s</div></td>
     <td>%(asserts)s</td>
     <td colspan='5' align='center'>
@@ -540,6 +546,7 @@ class _TestResult(TestResult):
 # 增加字段：url=None, method=None,asserts=None, response=None -victor
 URL = []  # url
 METHOD = []  # method
+BODY = []  # body
 RESPONSE = []  # response
 ASSERTS = []  # asserts
 
@@ -554,12 +561,13 @@ def set_response(response):
 def set_data(value):
     global URL
     global METHOD
+    global BODY
     global ASSERTS
-    # 如果出现KeyError: '***' 则需要在测试数据中添加对应字段
+    # 如果出现KeyError: '***' 则需要在测试数据中添加对应字段,如果有该字段，还是报错可能是没有读取到
     URL.append(value['url'])
     METHOD.append(value['method'])
+    BODY.append(value['body'])
     ASSERTS.append(value['asserts'])
-
 
 
 class HTMLTestRunner(Template_mixin):
@@ -568,6 +576,7 @@ class HTMLTestRunner(Template_mixin):
 
     global URL
     global METHOD
+    global BODY
     global SASSERT
     global RESPONSE
 
@@ -780,8 +789,9 @@ class HTMLTestRunner(Template_mixin):
             desc=desc,
             script=script,
             status=self.STATUS[n],
-            url=URL[i],
+            url=URL[i], # 像页面内插入值
             method=METHOD[i],
+            body=BODY[i],
             asserts=ASSERTS[i],
             response=RESPONSE[i],
         )

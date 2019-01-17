@@ -30,6 +30,7 @@ def get_testcase(filepath, index, module):
                 dict_canshu.update(eval(sheet.cell(i, 2).value))
                 dict_canshu.update(eval(sheet.cell(i, 3).value))
                 dict_canshu.update(eval(sheet.cell(i, 4).value))
+                dict_canshu.update(eval(sheet.cell(i, 5).value))
                 listdata.append(dict_canshu)
         logs.logger.info('获取%s内第%s个sheet(工作表)用例模块为"%s"的测试数据' % (filepath, index,module))
         logs.logger.info('测试数据listdata：%s' % listdata)
