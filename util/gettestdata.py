@@ -24,13 +24,13 @@ def get_testcase(filepath, index, module):
         listdata = []
         for i in range(1, nrows):
             dict_canshu = {}
-            dict_canshu['module'] = sheet.cell(i, 0).value  # 获取每行第一列内容
+            dict_canshu['module'] = sheet.cell(i, 0).value  # 获取第'i'行'n'列内容
             if dict_canshu['module'] == module:  # dict_canshu['module'] 等于 module 则获取这行数据
-                dict_canshu['case_name'] = sheet.cell(i, 1).value  # 获取每行第'i'列内容
-                dict_canshu.update(eval(sheet.cell(i, 2).value))
-                dict_canshu.update(eval(sheet.cell(i, 3).value))
-                dict_canshu.update(eval(sheet.cell(i, 4).value))
-                dict_canshu.update(eval(sheet.cell(i, 5).value))
+                dict_canshu['case_name'] = sheet.cell(i, 1).value
+                dict_canshu['url'] = sheet.cell(i, 2).value
+                dict_canshu['method'] = sheet.cell(i, 3).value
+                dict_canshu['body'] = sheet.cell(i, 4).value
+                dict_canshu['asserts'] = sheet.cell(i, 5).value
                 listdata.append(dict_canshu)
         logs.logger.info('获取%s内第%s个sheet(工作表)用例模块为"%s"的测试数据' % (filepath, index,module))
         logs.logger.info('测试数据listdata：%s' % listdata)
