@@ -57,6 +57,7 @@ PASSRATE_S_TD_TR_TABLE_ = """
 <a class="btn btn-success" href='javascript:showCase(2)'>通过{ %(Pass)s }</a>
 <a class="btn btn-info" href='javascript:showCase(3)'>所有{ %(count)s }</a>
 </p>
+<div class="table-responsive">
 <table id='result_table' class="table table-condensed table-bordered table-hover">
 <colgroup>
 <col align='left' />
@@ -68,15 +69,17 @@ PASSRATE_S_TD_TR_TABLE_ = """
 <col align='right' />
 </colgroup>
 <!-- td 宽度 -->
+<thead>
 <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
-    <td style="width:150px">用例集/用例</td>
-    <td style="width:125px">url</td>
-    <td style="width:90px">请求方式</td>
-    <td style="width:350px">请求体</td>
-    <td style="width:350px">响应</td>
-    <td style="width:150px">预期结果</td>
-    <td style="width:90px">实际结果</td>
+    <th style="width:150px">用例集/用例</th>
+    <th style="width:280px">url</th>
+    <th style="width:90px">请求方式</th>
+    <th style="width:280px">请求体</th>
+    <th style="width:280px">响应</th>
+    <th style="width:120px">预期结果</th>
+    <th style="width:90px">实际结果</th>
 </tr>
+</thead>
 %(test_list)s
 <tr id='total_row' class="text-center active">
     <td></td>
@@ -88,6 +91,7 @@ PASSRATE_S_TD_TR_TABLE_ = """
     <td></td>
 </tr>
 </table>
+</div>
 """
 
 __author__ = "Wai Yip Tung,  Findyou"
@@ -381,19 +385,21 @@ pre{text-align:left;}
     # 失败 的样式，去掉原来JS效果，美化展示效果 增加接口请求信息：响应、断言  -Victor
     REPORT_TEST_WITH_OUTPUT_TMPL = r"""
 <tr id='%(tid)s' class='%(Class)s'>
-    <td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
-    <td ><div style="width:125px;height:100px;overflow:auto;" >%(url)s</div></td>
-    <td>%(method)s</td>
-    <td><div style="height:100px;overflow:auto;" >%(body)s</div></td>
-    <td><div style="height:100px;overflow:auto;" >%(response)s</div></td>
-    <td>%(asserts)s</td>
-    <td colspan='5' align='center'>
+    <td style="width:150px"class='%(style)s'><div class='testcase'>%(desc)s</div></td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;">%(url)s</div></td>
+    <td style="width:90px">%(method)s</td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;" >%(body)s</div></td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;" >%(response)s</div></td>
+    <td style="width:90px">%(asserts)s</td>
+    <td style="width:90px"colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou  -->
       <!--按钮点击事件 -->
         <button id='btn_%(tid)s' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_%(tid)s'>%(status)s</button> 
     <div id='div_%(tid)s' class="collapse">
     <pre>
     %(script)s
+     
+     
     </pre>
     </div>
     </td>
@@ -418,13 +424,13 @@ pre{text-align:left;}
 	background: #5599FF;
 </style>
 <tr id='%(tid)s' class='%(Class)s'>
-    <td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
-    <td><div style="width:125px;height:100px;overflow:auto;" >%(url)s</div></td>
-    <td>%(method)s</td>
-    <td><div style="height:100px;overflow:auto;" >%(body)s</div></td>
-    <td><div style="height:100px;overflow:auto;" >%(response)s</div></td>
-    <td>%(asserts)s</td>
-    <td colspan='5' align='center'>
+    <td style="width:150px" class='%(style)s'><div class='testcase'>%(desc)s</div></td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;">%(url)s</div></td>
+    <td style="width:90px">%(method)s</td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;">%(body)s</div></td>
+    <td style="width:280px"><div style="height:100px;overflow-x:hidden;overflow-y:auto;" >%(response)s</div></td>
+    <td style="width:120px">%(asserts)s</td>
+    <td style="width:90px"colspan='5' align='center'>
         <button class="login-button" data-target='#div_%(tid)s'>%(status)s</button>
     </td>
 </tr>
