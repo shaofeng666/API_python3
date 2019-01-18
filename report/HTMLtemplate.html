@@ -118,20 +118,21 @@ function html_escape(s) {
 <div class='heading'>
 <h1 style="font-family: Microsoft YaHei">Python 自动化测试报告</h1>
 <p class='attribute'><strong>测试人员 : </strong> 最棒QA</p>
-<p class='attribute'><strong>开始时间 : </strong> 2018-12-27 22:18:09</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:00:00.338096</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 3，通过 3，通过率= 100.00%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2019-01-18 18:17:18</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:00.938554</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 2，通过 1，失败 1，通过率= 50.00%</p>
 
 <p class='description'>测试结果【截图+样式优化】</p>
 </div>
 
 
 <p id='show_detail_line'>
-<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 100.00% }</a>
-<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 0 }</a>
-<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 3 }</a>
-<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 3 }</a>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 50.00% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 1 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 1 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 2 }</a>
 </p>
+<div class="table-responsive">
 <table id='result_table' class="table table-condensed table-bordered table-hover">
 <colgroup>
 <col align='left' />
@@ -143,22 +144,26 @@ function html_escape(s) {
 <col align='right' />
 </colgroup>
 <!-- td 宽度 -->
+<thead>
 <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
-    <td style="width:150px">用例集/用例</td>
-    <td>url</td>
-    <td style="width:80px">请求方式</td>
-    <td style="width:650px">响应</td>
-    <td style="width:240px">预期结果</td>
-    <td style="width:150px">详细</td>
+    <th style="width:150px">用例集/用例</th>
+    <th style="width:280px">url</th>
+    <th style="width:90px">请求方式</th>
+    <th style="width:280px">请求体</th>
+    <th style="width:280px">响应</th>
+    <th style="width:120px">预期结果</th>
+    <th style="width:90px">实际结果</th>
 </tr>
+</thead>
 
-<tr class='passClass warning'>
+<tr class='failClass warning'>
     <td>test_login.requsetsTest</td>
-    <td class="text-center">总计：3</td>
-    <td class="text-center">通过：3</td>
-    <td class="text-center">失败：0</td>
+    <td class="text-center">总计：2</td>
+    <td class="text-center">通过：1</td>
+    <td class="text-center">失败：1</td>
     <td class="text-center">错误：0</td>
-    <td class="text-center"><a href="javascript:showClassDetail('c1',3)" class="detail" id='c1'>详细</a></td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',2)" class="detail" id='c1'>详细</a></td>
+    <td></td>
 </tr>
 
 <style type="text/css">
@@ -177,77 +182,87 @@ function html_escape(s) {
 	background: #5599FF;
 </style>
 <tr id='pt1_1' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_baidu_1_登陆成功1</div></td>
-    <td>https://www.json.cn/</td>
-    <td>POST</td>
-    <td><div style="height:100px;overflow:auto;" >{"time":"2018-12-27 19:00:20","cityInfo":{"city":"天津市","cityId":"101030100","parent":"天津","updateTime":"18:53"},"date":"20181227","message":"Success !","status":200,"data":{"shidu":"12%","pm25":11.0,"pm10":78.0,"quality":"良","wendu":"-8","ganmao":"极少数敏感人群应减少户外活动","yesterday":{"date":"26","sunrise":"07:28","high":"高温 -1.0℃","low":"低温 -7.0℃","sunset":"16:54","aqi":56.0,"ymd":"2018-12-26","week":"星期三","fx":"东北风","fl":"3-4级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},"forecast":[{"date":"27","sunrise":"07:29","high":"高温 -6.0℃","low":"低温 -9.0℃","sunset":"16:55","aqi":60.0,"ymd":"2018-12-27","week":"星期四","fx":"北风","fl":"4-5级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"28","sunrise":"07:29","high":"高温 -5.0℃","low":"低温 -10.0℃","sunset":"16:55","aqi":29.0,"ymd":"2018-12-28","week":"星期五","fx":"西北风","fl":"5-6级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"29","sunrise":"07:30","high":"高温 -3.0℃","low":"低温 -9.0℃","sunset":"16:56","aqi":30.0,"ymd":"2018-12-29","week":"星期六","fx":"西北风","fl":"4-5级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"30","sunrise":"07:30","high":"高温 -2.0℃","low":"低温 -8.0℃","sunset":"16:57","aqi":33.0,"ymd":"2018-12-30","week":"星期日","fx":"西北风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"31","sunrise":"07:30","high":"高温 -1.0℃","low":"低温 -5.0℃","sunset":"16:58","aqi":43.0,"ymd":"2018-12-31","week":"星期一","fx":"东北风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"}]}}</div></td>
-    <td>400</td>
-    <td colspan='5' align='center'>
+    <td style="width:150px" class='passCase'><div class='testcase'>test_baidu_1_获取token</div></td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;">/cgi-bin/token</div></td>
+    <td style="width:90px">GET</td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;">appid=wxc83b79a8673a4286&secret=2f42b90bfd9da20ae3de3482fcd658e1</div></td>
+    <td style="width:280px"><div style="height:100px;overflow-x:hidden;overflow-y:auto;" ></div></td>
+    <td style="width:120px">200</td>
+    <td style="width:90px"colspan='5' align='center'>
         <button class="login-button" data-target='#div_pt1_1'>通过</button>
     </td>
 </tr>
 
-<style type="text/css">
-.login-button { /* 按钮美化 */
-    height: 21px;
-    border-width: 0px; /* 边框宽度 */
-    border-radius: 3px; /* 边框半径 */
-    background: #1E90FF; /* 背景颜色 */
-    cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
-    outline: none; /* 不显示轮廓线 */
-    font-family: Microsoft YaHei; /* 设置字体 */
-    color: white; /* 字体颜色 */
-    font-size: 12px; /* 字体大小 */
-}
-.login-button:hover { /* 鼠标移入按钮范围时改变颜色 */
-	background: #5599FF;
-</style>
-<tr id='pt1_2' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_baidu_2_登陆失败2</div></td>
-    <td>https://www.json.cn/</td>
-    <td>POST</td>
-    <td><div style="height:100px;overflow:auto;" >{"time":"2018-12-27 19:00:20","cityInfo":{"city":"天津市","cityId":"101030100","parent":"天津","updateTime":"18:53"},"date":"20181227","message":"Success !","status":200,"data":{"shidu":"12%","pm25":11.0,"pm10":78.0,"quality":"良","wendu":"-8","ganmao":"极少数敏感人群应减少户外活动","yesterday":{"date":"26","sunrise":"07:28","high":"高温 -1.0℃","low":"低温 -7.0℃","sunset":"16:54","aqi":56.0,"ymd":"2018-12-26","week":"星期三","fx":"东北风","fl":"3-4级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},"forecast":[{"date":"27","sunrise":"07:29","high":"高温 -6.0℃","low":"低温 -9.0℃","sunset":"16:55","aqi":60.0,"ymd":"2018-12-27","week":"星期四","fx":"北风","fl":"4-5级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"28","sunrise":"07:29","high":"高温 -5.0℃","low":"低温 -10.0℃","sunset":"16:55","aqi":29.0,"ymd":"2018-12-28","week":"星期五","fx":"西北风","fl":"5-6级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"29","sunrise":"07:30","high":"高温 -3.0℃","low":"低温 -9.0℃","sunset":"16:56","aqi":30.0,"ymd":"2018-12-29","week":"星期六","fx":"西北风","fl":"4-5级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"30","sunrise":"07:30","high":"高温 -2.0℃","low":"低温 -8.0℃","sunset":"16:57","aqi":33.0,"ymd":"2018-12-30","week":"星期日","fx":"西北风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"31","sunrise":"07:30","high":"高温 -1.0℃","low":"低温 -5.0℃","sunset":"16:58","aqi":43.0,"ymd":"2018-12-31","week":"星期一","fx":"东北风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"}]}}</div></td>
-    <td>400</td>
-    <td colspan='5' align='center'>
-        <button class="login-button" data-target='#div_pt1_2'>通过</button>
-    </td>
-</tr>
+<tr id='ft1_2' class='none'>
+    <td style="width:150px"class='failCase'><div class='testcase'>test_baidu_2_菜单创建接口</div></td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;">/cgi-bin/menu/create?access_token=ACCESS_TOKEN</div></td>
+    <td style="width:90px">POST</td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;" >{
+     "button":[
+     {    
+          "type":"click",
+          "name":"今日歌曲",
+          "key":"V1001_TODAY_MUSIC"
+      },
+      {
+           "name":"菜单",
+           "sub_button":[
+           {    
+               "type":"view",
+               "name":"搜索",
+               "url":"http://www.soso.com/"
+            },
+            {
+                 "type":"miniprogram",
+                 "name":"wxa",
+                 "url":"http://mp.weixin.qq.com",
+                 "appid":"wx286b93c14bbf93aa",
+                 "pagepath":"pages/lunar/index"
+             },
+            {
+               "type":"click",
+               "name":"赞一下我们",
+               "key":"V1001_GOOD"
+            }]
+       }]
+ }</div></td>
+    <td style="width:280px"><div style="height:100px;overflow-y:auto;" ></div></td>
+    <td style="width:90px">400</td>
+    <td style="width:90px"colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou  -->
+      <!--按钮点击事件 -->
+        <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_2'>失败</button> 
+    <div id='div_ft1_2' class="collapse">
+    <pre>
+    
+ft1_2: 请求开始
+请求结束
+Traceback (most recent call last):
+  File "C:\Users\PicaHealth\Desktop\projects\API_python3\util\modules\ddt.py", line 144, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\PicaHealth\Desktop\projects\API_python3\test_case\test_login.py", line 28, in test_baidu
+    assert '200'==asserts
+AssertionError
 
-<style type="text/css">
-.login-button { /* 按钮美化 */
-    height: 21px;
-    border-width: 0px; /* 边框宽度 */
-    border-radius: 3px; /* 边框半径 */
-    background: #1E90FF; /* 背景颜色 */
-    cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
-    outline: none; /* 不显示轮廓线 */
-    font-family: Microsoft YaHei; /* 设置字体 */
-    color: white; /* 字体颜色 */
-    font-size: 12px; /* 字体大小 */
-}
-.login-button:hover { /* 鼠标移入按钮范围时改变颜色 */
-	background: #5599FF;
-</style>
-<tr id='pt1_3' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_baidu_3_登陆失败3</div></td>
-    <td>https://www.json.cn/</td>
-    <td>POST</td>
-    <td><div style="height:100px;overflow:auto;" >{"time":"2018-12-27 19:00:20","cityInfo":{"city":"天津市","cityId":"101030100","parent":"天津","updateTime":"18:53"},"date":"20181227","message":"Success !","status":200,"data":{"shidu":"12%","pm25":11.0,"pm10":78.0,"quality":"良","wendu":"-8","ganmao":"极少数敏感人群应减少户外活动","yesterday":{"date":"26","sunrise":"07:28","high":"高温 -1.0℃","low":"低温 -7.0℃","sunset":"16:54","aqi":56.0,"ymd":"2018-12-26","week":"星期三","fx":"东北风","fl":"3-4级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},"forecast":[{"date":"27","sunrise":"07:29","high":"高温 -6.0℃","low":"低温 -9.0℃","sunset":"16:55","aqi":60.0,"ymd":"2018-12-27","week":"星期四","fx":"北风","fl":"4-5级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"28","sunrise":"07:29","high":"高温 -5.0℃","low":"低温 -10.0℃","sunset":"16:55","aqi":29.0,"ymd":"2018-12-28","week":"星期五","fx":"西北风","fl":"5-6级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"29","sunrise":"07:30","high":"高温 -3.0℃","low":"低温 -9.0℃","sunset":"16:56","aqi":30.0,"ymd":"2018-12-29","week":"星期六","fx":"西北风","fl":"4-5级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"30","sunrise":"07:30","high":"高温 -2.0℃","low":"低温 -8.0℃","sunset":"16:57","aqi":33.0,"ymd":"2018-12-30","week":"星期日","fx":"西北风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"31","sunrise":"07:30","high":"高温 -1.0℃","low":"低温 -5.0℃","sunset":"16:58","aqi":43.0,"ymd":"2018-12-31","week":"星期一","fx":"东北风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"}]}}</div></td>
-    <td>400</td>
-    <td colspan='5' align='center'>
-        <button class="login-button" data-target='#div_pt1_3'>通过</button>
+
+     
+     
+    </pre>
+    </div>
     </td>
 </tr>
 
 <tr id='total_row' class="text-center active">
     <td></td>
-    <td>总计：3</td>
-    <td>通过：3</td>
-    <td>失败：0</td>
+    <td>总计：2</td>
+    <td>通过：1</td>
+    <td>失败：1</td>
     <td>错误：0</td>
-    <td>通过率：100.00%</td>
+    <td>通过率：50.00%</td>
+    <td></td>
 </tr>
 </table>
+</div>
 
 <div id='ending'>&nbsp;</div>
     <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
