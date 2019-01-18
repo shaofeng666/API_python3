@@ -36,3 +36,6 @@ sender_nickname = 'QQ个人邮箱'  # 发送人昵称
 to_addrs_nickname = '某项目相关人员'  # 收件人昵称
 
 root_path = os.path.split(os.path.realpath(__file__))[0]# 根目录
+
+
+hosts='https://api.weixin.qq.com/'
