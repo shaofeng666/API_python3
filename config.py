@@ -27,7 +27,7 @@ description = '测试结果【截图+样式优化】'  # 测试报告需要的�
 # 第三方 SMTP 服务
 mail_host = "smtp.qq.com"  # 设置服务器
 mail_user = "172212595@qq.com"  # 用户名
-mail_pass = "ouiapsjgzjdvcaej"  # 授权码 qq邮箱获取地址：https://jingyan.baidu.com/article/6079ad0eb14aaa28fe86db5a.html
+mail_pass = ""  # 授权码 qq邮箱获取地址：https://jingyan.baidu.com/article/6079ad0eb14aaa28fe86db5a.html
 sender = '172212595@qq.com'  # 发送邮件的邮箱
 to_addrs = ['172212595@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 # 邮件内容
